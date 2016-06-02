@@ -1,0 +1,50 @@
+@startuml
+class DataLog2 {
+  int ID
+  Array Value
+  int SourceID
+  int QuantityID
+  Date TimestampUTC
+}
+class Source {
+  int ID
+  String name
+  int NamespaceID
+  int SourceTypeID
+  int TimeZoneID
+  String Description
+  String Signature
+  String DisplayName
+}
+class Quantity {
+  int ID
+  String Name
+  String Base
+  String Unit
+  String Phase
+  String Type
+  String Direction
+  String Misc
+  String Description
+}
+class Namespace {
+  int ID
+  String Name
+  String Description
+}
+class SourceType {
+  int ID
+  String Name
+}
+class TimeZone {
+  int ID
+  String DisplayName
+  int Bias
+  int DaylightBias
+}
+Source "1" -- "many" DataLog2
+Quantity "1" -- "many" DataLog2
+Namespace "1" -- "many" Source
+SourceType "1" -- "many" Source
+TimeZone "1" -- "many" Source
+@enduml
